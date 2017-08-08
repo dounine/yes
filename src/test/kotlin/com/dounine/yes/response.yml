@@ -1,0 +1,9 @@
+data.cu.ages{length}:
+- name: 用户名
+  result: 10
+  condition: eq
+
+data:
+- name: 用户名
+  result: 10
+  condition: eq

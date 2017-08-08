@@ -1,0 +1,15 @@
+username:
+- name: 用户名 #名称
+  required: true #是否必填
+  defaultValue: true #默认值
+  type: Number #数据类型
+  onstraint: not empty #约束
+  description: hahah #描述
+
+userId:
+- name: 用户ID
+  required: false
+  defaultValue: true
+  type: String
+  constraint: not empty
+  description:
