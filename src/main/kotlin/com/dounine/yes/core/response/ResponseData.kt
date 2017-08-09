@@ -12,14 +12,17 @@ class ResponseData {
     private var constraint:String = ""
 
     fun name(name:String): ResponseData {
+        this.name = name
         return this
     }
 
     fun type(type: DataType): ResponseData {
+        this.type = type
         return this
     }
 
     fun des(des:String): ResponseData {
+        this.des = des
         return this
     }
 
@@ -32,5 +35,11 @@ class ResponseData {
         this.constraint = con
         return this
     }
+
+    fun getName():String = this.name
+    fun getDes():String = this.des
+    fun getType():DataType = this.type
+    fun getRequire():Boolean = this.require
+    fun getConstraint():String = this.constraint
 
 }

@@ -28,13 +28,15 @@ class YesApplicationTests {
     fun testGetMethod() {
         yesDoc
                 .request(RequestMethod.PUT, url = "/result/put/{username}")
-                .segment(Segment().name("username").des("描述").type(DataType.String))
+                .segment(Segment().name("username").des("用户名").type(DataType.String))
                 .parameter(Parameter().name("age").des("年龄").type(DataType.Number))
                 .rpDoc()
+                .name("list")
+                .requestHeader(RequestHeader().name("token").des("令牌").require())
                 .requestData(RequestData().name("age").des("多大了").constraint("10岁以上"))
-                .requestData(RequestData().name("address").des("多大了").type(DataType.String).des("地扯"))
-                .responseData(ResponseData().name("uuid").des("编号").type(DataType.String).des("地扯"))
-                .responseData(ResponseData().name("address").des("多大了").type(DataType.String).des("地扯"))
+                .requestData(RequestData().name("address").des("地扯").type(DataType.String))
+                .responseData(ResponseData().name("uuid").des("编号").type(DataType.String))
+                .responseData(ResponseData().name("address").des("地扯").type(DataType.String))
                 .example(object : Example {
 
                     override fun name(): String = "这是list功能"
@@ -53,6 +55,7 @@ class YesApplicationTests {
                     }
                 })
                 .done()
+                .printDoc()
                 .postMan()
 
 

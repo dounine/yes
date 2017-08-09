@@ -12,6 +12,7 @@ class YesDoc {
     private var parameters:ArrayList<Parameter> = ArrayList()
     private var prefixPath:String = ""
 
+
     fun init(prefixPath:String = ""){
         this.prefixPath = prefixPath
     }
@@ -36,9 +37,10 @@ class YesDoc {
         return RPDoc(this)
     }
 
+
     fun getMethod():RequestMethod = this.method
     fun getUrl():String = this.url
     fun getPrefixUrl():String = this.prefixPath
-    fun getParameter():List<Parameter> = this.parameters
+    fun getParameters():List<Parameter> = this.parameters
     fun getSegments():List<Segment> = this.segments
 }

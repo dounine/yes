@@ -1,7 +1,6 @@
 package com.dounine.yes.core.request
 
-
-class Parameter {
+class RequestHeader {
 
     private lateinit var name:String
     private var type:DataType = DataType.String
@@ -9,27 +8,27 @@ class Parameter {
     private var require:Boolean = false
     private var constraint:String = "无"
 
-    fun name(name:String):Parameter{
+    fun name(name:String):RequestHeader{
         this.name = name
         return this
     }
 
-    fun type(type:DataType):Parameter{
+    fun type(type:DataType):RequestHeader{
         this.type = type
         return this
     }
 
-    fun des(des:String):Parameter{
+    fun des(des:String):RequestHeader{
         this.des = des
         return this
     }
 
-    fun require():Parameter{
+    fun require():RequestHeader{
         this.require = true
         return this
     }
 
-    fun constraint(con:String):Parameter{
+    fun constraint(con:String):RequestHeader{
         this.constraint = con
         return this
     }
@@ -39,5 +38,4 @@ class Parameter {
     fun getType():DataType = this.type
     fun getRequire():Boolean = this.require
     fun getConstraint():String = this.constraint
-
 }

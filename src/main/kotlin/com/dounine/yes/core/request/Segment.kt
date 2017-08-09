@@ -8,14 +8,17 @@ class Segment {
     private var constraint:String = ""
 
     fun name(name:String):Segment{
+        this.name = name
         return this
     }
 
     fun type(type:DataType):Segment{
+        this.type = type
         return this
     }
 
     fun des(des:String):Segment{
+        this.des = des
         return this
     }
 
@@ -23,6 +26,9 @@ class Segment {
         this.constraint = con
         return this
     }
+
+    fun getName():String = this.name
+    fun getDes():String = this.des
 
 }
 
