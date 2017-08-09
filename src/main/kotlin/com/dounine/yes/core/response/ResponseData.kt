@@ -8,6 +8,7 @@ class ResponseData {
     private lateinit var name:String
     private var type: DataType = DataType.String
     private var des:String = ""
+    private var value:Any = ""
     private var require:Boolean = false
     private var constraint:String = ""
 
@@ -26,8 +27,13 @@ class ResponseData {
         return this
     }
 
-    fun require(): ResponseData {
-        this.require = true
+    fun value(value:Any): ResponseData {
+        this.value =value
+        return this
+    }
+
+    fun require(require:Boolean = true): ResponseData {
+        this.require = require
         return this
     }
 
@@ -41,5 +47,6 @@ class ResponseData {
     fun getType():DataType = this.type
     fun getRequire():Boolean = this.require
     fun getConstraint():String = this.constraint
+    fun getValue():Any = this.value
 
 }

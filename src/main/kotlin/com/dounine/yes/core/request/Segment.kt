@@ -5,6 +5,7 @@ class Segment {
     private lateinit var name:String
     private var type:DataType = DataType.String
     private var des:String = ""
+    private var value:Any = ""
     private var constraint:String = ""
 
     fun name(name:String):Segment{
@@ -22,6 +23,11 @@ class Segment {
         return this
     }
 
+    fun value(value:Any):Segment{
+        this.value =value
+        return this
+    }
+
     fun constraint(con:String):Segment{
         this.constraint = con
         return this
@@ -29,6 +35,7 @@ class Segment {
 
     fun getName():String = this.name
     fun getDes():String = this.des
+    fun getValue():Any = this.value
 
 }
 

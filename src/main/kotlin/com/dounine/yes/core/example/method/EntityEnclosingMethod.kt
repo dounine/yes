@@ -1,5 +1,6 @@
 package com.dounine.yes.core.example.method
 
+import com.alibaba.fastjson.JSON
 import com.dounine.yes.core.example.Example
 import com.dounine.yes.core.example.Expect
 import com.dounine.yes.core.example.client.ExampleClient
@@ -57,9 +58,12 @@ open class EntityEnclosingMethod(example: Example,method:RequestMethod) : BaseMe
         exampleClient.fillCookie(cookies,httpContext)
 
         var response: HttpResponse = ExampleClient.HTTP_CLIENT.execute(httpRequest, httpContext)
+        return example.expect(response,httpContext)
 
-        return example.expect(response)
+    }
 
+    fun getDatas():List<Data>{
+        return this.data
     }
 
 }

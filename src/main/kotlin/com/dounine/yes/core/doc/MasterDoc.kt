@@ -20,10 +20,6 @@ class MasterDoc {
     private val requestDatas: List<RequestData>
     private val responseDatas: List<ResponseData>
 
-    companion object {
-        val VARIABLE_PATTERN: Pattern = Pattern.compile("[{][a-zA-Z0-9_$]+[}]")
-    }
-
     constructor(
             url: String,
             method: RequestMethod,
@@ -94,29 +90,6 @@ class MasterDoc {
     }
 
     fun handleUrl(): String {
-        var tmpUrl: String = this.url
-        var matcher: Matcher = VARIABLE_PATTERN.matcher(tmpUrl)
-        var variables: ArrayList<String> = ArrayList()
-        var matchCount: Int = 0
-        while (matcher.find()) {
-            variables.add(matcher.group())
-        }
-        if (segments.size != variables.size) {
-            throw YesDocException("segment 数量${segments.size}不匹配variable${variables.size}")
-        }
-
-        for (variable in variables) {
-            var op: Optional<Segment> = segments.stream().filter({ s -> s.getName().equals(StringUtils.substring(variable, 1, -1)) }).findAny()
-            if (op.isPresent) {
-                matchCount++
-                if ("" != op.get().getDes()) {
-                    tmpUrl = tmpUrl.replace(variable, "{" + op.get().getDes() + "}")
-                }
-            }
-        }
-        if (matchCount != segments.size) {
-            throw YesDocException("segment 数量${segments.size}不匹配variable${variables.size}")
-        }
-        return tmpUrl
+        return UrlUtils.handleUrl(this.url,this.segments)
     }
 }

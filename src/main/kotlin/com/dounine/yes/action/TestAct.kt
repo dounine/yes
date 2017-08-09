@@ -10,6 +10,8 @@ import java.io.FileInputStream
 import java.io.OutputStream
 import java.net.URLEncoder
 import java.util.*
+import javax.servlet.http.Cookie
+import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 @RestController
@@ -65,7 +67,9 @@ class TestAct {
     }
 
     @PutMapping("result/put/{username}")
-    fun usernamePut(@PathVariable username: String): Result {
+    fun usernamePut(@PathVariable username: String,request:HttpServletRequest,response:HttpServletResponse): Result {
+        var cookie:Cookie = Cookie("lake-cookie","cookie-value")
+        response.addCookie(cookie)
         return ActResult(User("lake",23,Arrays.asList(Cuser("广东",Arrays.asList(10,22))),Cuser("bb",Arrays.asList(10,22))))
     }
 

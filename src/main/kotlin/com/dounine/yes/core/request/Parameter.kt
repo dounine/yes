@@ -6,6 +6,7 @@ class Parameter {
     private lateinit var name:String
     private var type:DataType = DataType.String
     private var des:String = "无"
+    private var value:Any = ""
     private var require:Boolean = false
     private var constraint:String = "无"
 
@@ -29,6 +30,11 @@ class Parameter {
         return this
     }
 
+    fun value(value:Any):Parameter{
+        this.value = value
+        return this
+    }
+
     fun constraint(con:String):Parameter{
         this.constraint = con
         return this
@@ -39,5 +45,6 @@ class Parameter {
     fun getType():DataType = this.type
     fun getRequire():Boolean = this.require
     fun getConstraint():String = this.constraint
+    fun getValue():Any = this.value
 
 }

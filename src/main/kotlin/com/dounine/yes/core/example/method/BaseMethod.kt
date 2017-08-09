@@ -1,9 +1,11 @@
 package com.dounine.yes.core.example.method
 
+import com.alibaba.fastjson.JSON
 import com.dounine.yes.core.example.Example
 import com.dounine.yes.core.example.Expect
 import com.dounine.yes.core.example.client.ExampleClient
 import com.dounine.yes.core.request.RequestMethod
+import com.dounine.yes.core.request.Segment
 import org.apache.http.HttpEntity
 import org.apache.http.HttpResponse
 import org.apache.http.client.methods.HttpDelete
@@ -34,9 +36,17 @@ open class BaseMethod {
         return this
     }
 
+    fun getParameters():List<ExParameter>{
+        return parameters
+    }
+
     fun addSegment(vararg segments: ExSegment): BaseMethod {
         this.segments.addAll(segments)
         return this
+    }
+
+    fun getSegments():List<ExSegment>{
+        return segments
     }
 
     fun addHeader(vararg headers: Header): BaseMethod {
@@ -44,9 +54,17 @@ open class BaseMethod {
         return this
     }
 
+    fun getHeaders():List<Header>{
+        return headers
+    }
+
     fun addCookie(vararg cookies: Cookie): BaseMethod {
         this.cookies.addAll(cookies)
         return this
+    }
+
+    fun getCookies():List<Cookie>{
+        return cookies
     }
 
 
@@ -70,8 +88,7 @@ open class BaseMethod {
         exampleClient.fillCookie(cookies, httpContext)
 
         var response: HttpResponse = ExampleClient.HTTP_CLIENT.execute(httpRequest, httpContext)
-
-        return example.expect(response)
+        return example.expect(response,httpContext)
     }
 
 }
